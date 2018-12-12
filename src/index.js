@@ -4,7 +4,6 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { CookiesProvider } from 'react-cookie';
 import { Provider as AlertProvider } from 'react-alert'
-import AlertTemplate from 'react-alert-template-basic'
 
 // Alert optional cofiguration
 const options = {
@@ -15,10 +14,8 @@ const options = {
 }
 
 ReactDOM.render(
-   <AlertProvider template={AlertTemplate} {...options}>
       <CookiesProvider>
          <App />
       </CookiesProvider>
-   </AlertProvider>,
    document.getElementById('root'));
 registerServiceWorker();

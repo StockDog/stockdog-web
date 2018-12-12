@@ -6,7 +6,7 @@ import AuthenticatedRoute from "components/Routing/AuthenticatedRoute";
 import UnauthenticatedRoute from "components/Routing/UnauthenticatedRoute";
 import { withCookies } from "react-cookie";
 import { Provider } from 'react-redux';
-import store from "./store";
+import store from "./store/store";
 
 // CSS
 import './global-css/App.css';
