@@ -8,11 +8,7 @@ import { withCookies } from "react-cookie";
 import { Provider } from 'react-redux';
 import store from "./store/store";
 
-// CSS
-import './global-css/App.css';
-
 // Containers
-
 
 class App extends Component {
    render() {
