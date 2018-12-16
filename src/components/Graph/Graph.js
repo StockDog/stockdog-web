@@ -8,6 +8,45 @@ const offWhite = 'rgb(247, 248, 249)';
 const gray = '#929292';
 
 class Graph extends Component {
+   constructor(props) {
+      super(props);
+
+      this.state = {
+         data: this.getData()
+      }
+   }
+
+   componentDidUpdate(prevProps) {
+      if (prevProps.labels != this.props.labels) {
+         this.setState({data: this.getData()});
+      }
+   }
+
+   getData() {
+      return {
+         labels: this.props.labels,
+         datasets: [
+            {
+               fill: false,
+               lineTension: 0,
+               borderColor: offWhite,
+               borderCapStyle: 'butt',
+               borderJoinStyle: 'miter',
+               borderWidth: 1,
+               pointRadius: 3,
+               pointBorderColor: offWhite,
+               pointBackgroundColor: offWhite,
+               pointHoverRadius: 10,
+               pointHoverBackgroundColor: offWhite,
+               pointHoverBorderWidth: 0,
+               pointHitRadius: 30,
+               lineTension: .4,
+               data: this.props.data
+            }
+         ]
+      }
+   }
+
    loadingAnimation = (
       <div className="Graph-loading-animation-wrapper">
          <div className="Graph-loading-animation">
@@ -15,29 +54,6 @@ class Graph extends Component {
          </div>
       </div>
    )
-   
-   data = {
-      labels: this.props.labels,
-      datasets: [
-         {
-            fill: false,
-            lineTension: 0,
-            borderColor: offWhite,
-            borderCapStyle: 'butt',
-            borderJoinStyle: 'miter',
-            borderWidth: 1,
-            pointRadius: 3,
-            pointBorderColor: offWhite,
-            pointBackgroundColor: offWhite,
-            pointHoverRadius: 10,
-            pointHoverBackgroundColor: offWhite,
-            pointHoverBorderWidth: 0,
-            pointHitRadius: 30,
-            lineTension: .4,
-            data: this.props.data
-         }
-      ]
-   }
 
    // Options for the chart
    options = {
@@ -48,13 +64,13 @@ class Graph extends Component {
       },
       showAllTooltips: true,
       tooltips: {
-         custom: function(tooltip) {
+         custom: function (tooltip) {
             if (!tooltip) return;
             // disable displaying the color box;
             tooltip.displayColors = false;
          },
          callbacks: {
-            label: function(tooltipItem) {
+            label: function (tooltipItem) {
                return '$' + tooltipItem.yLabel;
             }
          },
@@ -65,7 +81,7 @@ class Graph extends Component {
             ticks: {
                fontColor: gray,
                fontSize: 12,
-               callback: function(label, index, labels) {
+               callback: function (label, index, labels) {
                   return Math.round(label * 100) / 100;
                },
                fontFamily: "Assistant",
@@ -90,18 +106,18 @@ class Graph extends Component {
          }]
       }
    }
-   
-   render() { 
-      return ( 
+
+   render() {
+      return (
          <div class="Graph">
-            {this.props.isLoading ? 
+            {this.props.isLoading ?
                this.loadingAnimation :
                <div class="Graph-graph">
-                  <Line data={this.data} options={this.options} />
+                  <Line data={this.state.data} options={this.options} />
                </div>}
          </div>
-       );
+      );
    }
 }
- 
+
 export default Graph;
