@@ -1,16 +1,22 @@
 import { get, post, del } from './apiUtils';
+import store from '../store';
+import axios from 'axios';
 
-// Contains all of the API calls
-class API {
-   baseURL = 'http://198.199.100.209:5005/api';
-   config = {
-      "headers": {
-         "Content-Type": "application/json"
+const baseUrl = 'http://198.199.100.209:5005/api';
+const getHeaders = () => {
+   return {
+      'headers': {
+         'Content-Type': 'application/json',
+         'Authorization': store.getState().auth.token
       }
-   };
-   urls = {
-   };
+   }
+};
+const urls = {
+   charts: baseURL + '/charts'
+};
 
+const getStockHistory = async (ticker, length) => {
+   return await axios(charts + '/${ticker}?length=${length}');
 }
 
-export default API;
+export { getStockHistory };

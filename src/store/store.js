@@ -9,7 +9,7 @@ const middleware = [
 middleware.push(reduxLogger);
 
 const store = createStore(
-   combineReducers({}),
+   combineReducers({auth}),
    compose(
       applyMiddleware(...middleware),
       typeof window === 'object' &&
