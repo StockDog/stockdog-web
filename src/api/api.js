@@ -1,13 +1,13 @@
-import { get, post, del } from './apiUtils';
-import store from '../store';
+import store from '../store/store';
 import axios from 'axios';
 
-const baseUrl = 'http://198.199.100.209:5005/api';
+const baseURL = 'http://198.199.100.209:5005/api';
 const getHeaders = () => {
    return {
       'headers': {
          'Content-Type': 'application/json',
-         'Authorization': store.getState().auth.token
+         // Need to implement login register
+         // 'Authorization': store.getState().auth.token
       }
    }
 };
@@ -16,7 +16,7 @@ const urls = {
 };
 
 const getStockHistory = async (ticker, length) => {
-   return await axios(charts + '/${ticker}?length=${length}');
+   return await axios(urls.charts + '/${ticker}?length=${length}');
 }
 
 export { getStockHistory };
