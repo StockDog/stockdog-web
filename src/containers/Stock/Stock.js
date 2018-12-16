@@ -13,6 +13,7 @@ class Stock extends Component {
     this.state = {
       title: "About",
       content: "Advanced Micro Devices, Inc. engages in the provision of semiconductor businesses. It operates through the Computing and Graphics and Enterprise, Embedded and Semi-Custom segments.",
+      ticker: this.props.match.params.ticker.toUpperCase(),
       graphLabels: [],
       graphData: []
     };
@@ -33,6 +34,8 @@ class Stock extends Component {
     }
     ];
     // const response = getStockHistory('amd', 'day');
+
+    this.processStockHistory(response);
   }
 
   processStockHistory = (response) => {
@@ -54,6 +57,7 @@ class Stock extends Component {
     return (
       <div className="Stock">
         <Navbar />
+        <h1 id="stock-title">{this.state.ticker}</h1>
         <Graph data={this.state.graphData}
           labels={this.state.graphLabels}
         />
