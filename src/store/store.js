@@ -9,7 +9,9 @@ const middleware = [
 middleware.push(reduxLogger);
 
 const store = createStore(
-   combineReducers({auth}),
+   // Need to implement login and register
+   // combineReducers({authReducer}),
+   combineReducers({}),
    compose(
       applyMiddleware(...middleware),
       typeof window === 'object' &&
