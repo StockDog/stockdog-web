@@ -51,7 +51,7 @@ export class RegisterForm extends Component {
     return (
       <form className="register-form">
         <h1 className="company-name">StockDog</h1>
-        {registerError && <div className="form-error">Please fix errors before continuing...</div>}
+        {registerError && <div className="form-error">Please fill inputs with valid values...</div>}
         <div className="form-group">
           <input
             onChange={this.handleInputChange}
