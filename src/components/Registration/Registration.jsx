@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import "./Registration.css";
+import React, { Component } from 'react';
+import './Registration.css';
 
 // TODO: Create constants for all strings for eventual NLS
 
@@ -8,52 +8,50 @@ export class RegisterForm extends Component {
     super(props);
 
     this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      registerError: false
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      registerError: false,
     };
   }
 
-  isValidRegistration() {
-    // TODO: Implement Real Form Validation
-    const {firstName, lastName, email, password} = this.state;
-    return firstName && lastName && email && password;
-  }
-
-  handleInputChange = e => {
-    const {name, value} = e.target;
-    this.setState(() => {
-      return {[name]: value};
-    });
+  handleInputChange = (e) => {
+    const { name, value } = e.target;
+    this.setState(() => ({ [name]: value }));
   };
 
   handleRegisterClick = () => {
     // TODO: Implement backend registration interaction
     if (this.isValidRegistration()) {
       this.setState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        registerError: false
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        registerError: false,
       });
     } else {
-      this.setState({registerError: true});
+      this.setState({ registerError: true });
     }
   };
 
+  isValidRegistration() {
+    // TODO: Implement Real Form Validation
+    const {
+      firstName, lastName, email, password,
+    } = this.state;
+    return firstName && lastName && email && password;
+  }
+
   render() {
-    const {firstName, lastName, email, password, registerError} = this.state;
+    const {
+      firstName, lastName, email, password, registerError,
+    } = this.state;
     return (
       <form className="register-form">
         <h1 className="company-name">StockDog</h1>
-        {registerError && (
-          <div className="form-error">
-            Please fix errors before continuing...
-          </div>
-        )}
+        {registerError && <div className="form-error">Please fix errors before continuing...</div>}
         <div className="form-group">
           <input
             onChange={this.handleInputChange}
@@ -103,12 +101,10 @@ export class RegisterForm extends Component {
   }
 }
 
-const withRegisterPage = WrappedComponent => props => {
-  return (
-    <div className="register-page">
-      <WrappedComponent {...props} />
-    </div>
-  );
-};
+const withRegisterPage = WrappedComponent => props => (
+  <div className="register-page">
+    <WrappedComponent {...props} />
+  </div>
+);
 
 export default withRegisterPage(RegisterForm);
