@@ -1,0 +1,63 @@
+@import '../../global/css/Global.scss';
+
+.register-page {
+    height: 100vh;
+    min-height: 4.8rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:  $alt-bg-color;
+}
+.register-form {
+    display: flex;
+    flex-flow: column nowrap;
+    .company-name {
+        color: $white-color;
+        font-size: 3.6rem;
+        margin-bottom: 1.2rem;
+        text-align: center;
+    }
+    .form-error {
+        font-size: 1.6rem;
+        margin-bottom: 1.2rem;
+        color: $red-color;
+        font-weight: bold;
+        text-align: center;
+    }
+    .form-group {
+        height: 5rem;
+        width: 25rem;
+        margin-bottom: 1rem;
+        input {
+            height: 100%;
+            width: 100%;
+            font-size: 1.8rem;
+            padding-left: 1rem;
+            &::placeholder {
+                opacity: 0.6;
+            }
+        }
+        .info-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -2rem;
+            color: $white-color;
+        }
+    }
+    .register-btn {
+        background-color: $primary-color;
+        height: 5rem;
+        width: 25rem;
+        text-transform: uppercase;
+        font-size: 1.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $white-color;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
