@@ -1,6 +1,7 @@
 {
   "name": "stockdogweb",
-  "version": "0.1.0",
+  "version": "0.0.1",
+  "homepage": "www.stockdogapp.com",
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
@@ -30,7 +31,7 @@
     "build": "npm-run-all build-css build-js",
     "test": "NODE_PATH=src react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "build-and-deploy": "npm run build && s3cmd sync build/* s3://www.stockdogapp.com && echo '🚀  Deployed!'",
+    "build-and-deploy": "npm run build && aws s3 sync build/* s3://stockdog-ui && echo '🚀  Deployed!'",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "npm-run-all -p build-storybook -s public watch-css"
   },
