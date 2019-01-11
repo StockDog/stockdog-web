@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 import './Trade.css';
 import Button from '../Button/Button';
 
@@ -21,11 +22,19 @@ class Trade extends Component {
                </div>
             </div>
             <div className="trade-button">
-               <Button text={'Trade'} width={260} />
+               <Button text={'Trade'} width={260} 
+                  onClick={this.props.onClickBtn}
+               />
             </div>
          </div>
       );
    }
 }
+
+Trade.propTypes = {
+  quantity: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
+  volume: PropTypes.number.isRequired,
+};
 
 export default Trade;
