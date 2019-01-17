@@ -21,8 +21,17 @@ export class RegisterForm extends Component {
     this.setState(() => ({ [name]: value }));
   };
 
+  isValidEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    return emailRegex.test(email);
+  };
+
+  isValidPassword = (password) => {
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,32}$/;
+    return passwordRegex.test(password);
+  };
+
   handleRegisterClick = () => {
-    // TODO: Implement backend registration interaction
     if (this.isValidRegistration()) {
       this.setState({
         firstName: '',
@@ -36,13 +45,14 @@ export class RegisterForm extends Component {
     }
   };
 
-  isValidRegistration() {
-    // TODO: Implement Real Form Validation
+  isValidRegistration = () => {
     const {
       firstName, lastName, email, password,
     } = this.state;
-    return firstName && lastName && email && password;
-  }
+    return (
+      firstName && lastName && this.isValidEmail(email) && this.contextisValidPassword(password)
+    );
+  };
 
   render() {
     const {
