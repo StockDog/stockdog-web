@@ -17,7 +17,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #455f70; }
+  background-color: #212d35; }
 
 .register-form {
   display: flex;
@@ -34,8 +34,9 @@ body {
     font-weight: bold;
     text-align: center; }
   .register-form .form-group {
+    position: relative;
     height: 5rem;
-    width: 25rem;
+    width: 24.75rem;
     margin-bottom: 1rem; }
     .register-form .form-group input {
       height: 100%;
@@ -48,12 +49,16 @@ body {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      right: -2rem;
-      color: #f7f8f9; }
+      right: -4rem;
+      width: 2.4rem;
+      height: 2.4rem;
+      background-image: url("../../img/feather-icons/info.svg");
+      background-repeat: no-repeat;
+      background-size: cover; }
   .register-form .register-btn {
     background-color: #3ee7ad;
     height: 5rem;
-    width: 25rem;
+    width: 26rem;
     text-transform: uppercase;
     font-size: 1.8rem;
     display: flex;
