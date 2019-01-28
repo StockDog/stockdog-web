@@ -34,7 +34,7 @@ class Trade extends Component {
 Trade.propTypes = {
   quantity: PropTypes.number.isRequired,
   price: PropTypes.number.isRequired,
-  volume: PropTypes.number.isRequired,
+  volume: PropTypes.string.isRequired,
 };
 
 export default Trade;

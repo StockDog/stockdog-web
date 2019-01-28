@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Modal from 'react-responsive-modal';
 import Select from 'react-select';
 import Button from '../../Button/Button';
-import { transaction } from '../../../api/api';
+import { createTransaction } from '../../../api/api';
 import { withAlert } from 'react-alert'
 import './Transaction.css';
 
@@ -29,7 +29,7 @@ class Transaction extends Component {
   }
 
   onChange = (event) => {
-    var newState = this.state;
+    var newState = Object.assign({}, this.state);
 
     // Strip all non-numeral characters
     var amount = event.target.value.replace(/[^0-9.]/g, "");
@@ -55,8 +55,12 @@ class Transaction extends Component {
 
   execute = () => {
     // Hardcoded portfolio ID for now
-    transaction(this.props.ticker, parseInt(this.state.amount, 10),
-      this.state.selectedOption.value.toUpperCase(), 1);
+    createTransaction({
+      ticker: this.props.ticker, 
+      shareCount: parseInt(this.state.amount, 10),
+      action: this.state.selectedOption.value.toUpperCase(), 
+      portfolioId: 1 // Hardcoded until login is ready
+    });
     this.props.alert.show('Order has been executed.');
     this.props.onClose();
   }

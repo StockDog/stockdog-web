@@ -23,27 +23,32 @@ class Graph extends Component {
    }
 
    getData() {
+      let dataset = this.getDatasetOptions();
+      dataset.data = this.props.data;
+
       return {
          labels: this.props.labels,
          datasets: [
-            {
-               fill: false,
-               lineTension: 0,
-               borderColor: offWhite,
-               borderCapStyle: 'butt',
-               borderJoinStyle: 'miter',
-               borderWidth: 1,
-               pointRadius: 0,
-               pointBorderColor: offWhite,
-               pointBackgroundColor: offWhite,
-               pointHoverRadius: 3,
-               pointHoverBackgroundColor: offWhite,
-               pointHoverBorderWidth: 0,
-               pointHitRadius: 15,
-               lineTension: .4,
-               data: this.props.data
-            }
+            dataset
          ]
+      }
+   }
+
+   getDatasetOptions() {
+      return {
+         fill: false,
+         borderColor: offWhite,
+         borderCapStyle: 'butt',
+         borderJoinStyle: 'miter',
+         borderWidth: 1,
+         pointRadius: 0,
+         pointBorderColor: offWhite,
+         pointBackgroundColor: offWhite,
+         pointHoverRadius: 3,
+         pointHoverBackgroundColor: offWhite,
+         pointHoverBorderWidth: 0,
+         pointHitRadius: 15,
+         lineTension: .4      
       }
    }
 
@@ -109,10 +114,10 @@ class Graph extends Component {
 
    render() {
       return (
-         <div class="Graph">
+         <div className="Graph">
             {this.props.isLoading ?
                this.loadingAnimation :
-               <div class="Graph-graph">
+               <div className="Graph-graph">
                   <Line data={this.state.data} options={this.options} />
                </div>}
          </div>

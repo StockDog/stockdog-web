@@ -22,20 +22,10 @@ class Stock extends Component {
   }
 
   componentDidMount() {
-    // API team is changing the api endpoint for getStockHistory
-    // Hardcoding values for now
-    // const response = [{
-    //   "time": "2018-08-13 00:00:00",
-    //   "price": 19.16,
-    //   "epochTime": 1534143600.0
-    // },
-    // {
-    //   "time": "2018-08-14 00:00:00",
-    //   "price": 19.97,
-    //   "epochTime": 1534230000.0
-    // }
-    // ];
-    const response = getStockHistory(this.state.ticker, 'day').then((res) => {
+    getStockHistory({
+      ticker: this.state.ticker, 
+      length: 'day'
+    }).then((res) => {
       this.processStockHistory(res.data);
     }).catch(err => {
       console.log(err)
@@ -81,9 +71,8 @@ class Stock extends Component {
         <div className="stock-content">
           <Article title={this.state.title} content={this.state.content} />
         </div>
-        <Trade quantity={13} price={20.15} volume={'12M'}
+        <Trade quantity={13} price={price} volume={'12M'}
           onClickBtn={this.activateTransactionModal}
-          price={price}
         />
         <Transaction isOpen={this.state.transactionIsOpen}
           onClose={this.deactivateTransactionModal}

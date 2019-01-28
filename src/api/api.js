@@ -1,9 +1,8 @@
-import store from '../store/store';
 import axios from 'axios';
 
 // const baseURL = 'http://198.199.100.209:5005/api';
 const baseURL = 'http://localhost:5005/api/v1.0';
-const getConfig = () => {
+const getRequestConfig = () => {
    return {
       headers: {
          'Content-Type': 'application/json',
@@ -20,16 +19,22 @@ const urls = {
    transactions: baseURL + '/transactions'
 };
 
-export const getStockHistory = async (ticker, length) => {
-   return await axios.get(urls.charts + `/${ticker}?length=${length}`, getConfig());
+/**
+ * params:
+ * ticker
+ * length
+ */
+export const getStockHistory = async (params) => {
+   return await axios.get(`${urls.charts}/${params.ticker}?length=${params.length}`, getRequestConfig());
 };
 
-export const transaction = async (ticker, shareCount, action, portfolioId) => {
-   console.log(shareCount);
-   return await axios.post(urls.transactions, {
-      ticker,
-      shareCount,
-      action,
-      portfolioId
-   }, getConfig());
+/**
+ * params:
+ * ticker
+ * shareCount
+ * action
+ * portfolioId
+ */
+export const createTransaction = async (params) => {
+   return await axios.post(urls.transactions, params, getRequestConfig());
 };
