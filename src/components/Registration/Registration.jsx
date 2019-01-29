@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './Registration.css';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
-// TODO: Create constants for all strings for eventual NLS
+import axios from 'axios';
+import { withAlert } from 'react-alert';
+import { compose } from 'redux';
 
 export class Registration extends Component {
   constructor(props) {
@@ -35,17 +36,35 @@ export class Registration extends Component {
     return doesPasswordRegexMatchPassword;
   };
 
+  registerUser = async () => {
+    const {
+        firstName, lastName, email, password,
+      } = this.state,
+      requestBody = {
+        firstName,
+        lastName,
+        email,
+        password,
+      };
+
+    await axios.post('http://localhost:5005/api/v1.0/users', requestBody);
+  };
+
   handleRegisterClick = () => {
     if (this.isValidRegistration()) {
-      this.setState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        registerError: false,
-      });
-      // TODO: make POST request to backend
-      this.props.history.push('/login');
+      try {
+        this.registerUser();
+        this.setState({
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: '',
+          registerError: false,
+        });
+        this.props.history.push('/login');
+      } catch (error) {
+        this.props.alert.show(error);
+      }
     } else {
       this.setState({ registerError: true });
     }
@@ -67,7 +86,7 @@ export class Registration extends Component {
         <form className="register-form">
           <h1 className="company-name">StockDog</h1>
           {registerError && (
-            <div className="form-error">Please fill inputs with valid values...</div>
+            <div className="form-error">Please enter valid input into required fields...</div>
           )}
           <div className="form-group">
             <input
@@ -121,6 +140,10 @@ export class Registration extends Component {
 
 Registration.propTypes = {
   history: PropTypes.object.isRequired,
+  alert: PropTypes.object.isRequired,
 };
 
-export default withRouter(Registration);
+export default compose(
+  withAlert,
+  withRouter,
+)(Registration);
