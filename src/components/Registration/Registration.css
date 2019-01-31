@@ -21,12 +21,17 @@ body {
 
 .register-form {
   display: flex;
-  flex-flow: column nowrap; }
-  .register-form .company-name {
-    color: #f7f8f9;
-    font-size: 3.6rem;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 26rem; }
+  .register-form .company-logo {
+    height: 17.5rem;
+    width: 17.5rem;
     margin-bottom: 1.2rem;
-    text-align: center; }
+    text-align: center;
+    background-image: url("../../img/logo.png");
+    background-repeat: no-repeat;
+    background-size: cover; }
   .register-form .form-error {
     font-size: 1.6rem;
     margin-bottom: 1.2rem;
@@ -36,15 +41,22 @@ body {
   .register-form .form-group {
     position: relative;
     height: 5rem;
-    width: 24.75rem;
+    width: 80%;
     margin-bottom: 1rem; }
     .register-form .form-group input {
       height: 100%;
       width: 100%;
       font-size: 1.8rem;
-      padding-left: 1rem; }
+      background-color: #212d35;
+      border: none;
+      color: gray;
+      border-bottom: 1px solid gray; }
       .register-form .form-group input::placeholder {
         opacity: 0.6; }
+      .register-form .form-group input:focus {
+        outline: none;
+        border-bottom: 1px solid white;
+        color: white; }
     .register-form .form-group .info-icon {
       position: absolute;
       top: 50%;
@@ -56,9 +68,13 @@ body {
       background-repeat: no-repeat;
       background-size: cover; }
   .register-form .register-btn {
-    background-color: #3ee7ad;
-    height: 5rem;
-    width: 26rem;
+    font-weight: 300;
+    margin-top: 1rem;
+    border: 1px solid #3ee7ad;
+    border-radius: 30px;
+    background-color: #212d35;
+    height: 4rem;
+    width: 100%;
     text-transform: uppercase;
     font-size: 1.8rem;
     display: flex;

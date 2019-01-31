@@ -84,7 +84,7 @@ export class Registration extends Component {
     return (
       <div className="register-page">
         <form className="register-form">
-          <h1 className="company-name">StockDog</h1>
+          <div className="company-logo" />
           {registerError && (
             <div className="form-error">Please enter valid input into required fields...</div>
           )}
@@ -127,7 +127,6 @@ export class Registration extends Component {
               value={password}
               placeholder="password"
             />
-            <div className="info-icon" />
           </div>
           <div className="register-btn" onClick={this.handleRegisterClick}>
             register
