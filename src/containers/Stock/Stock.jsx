@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Stock.css';
 import { getStockHistory } from '../../api/api';
 
-import Navbar from '../../components/Navigation/Navbar';
+import Navbar from '../../components/Navigation/Navbar/Navbar';
 import Graph from '../../components/Graph/Graph';
 import Article from '../../components/Article/Article';
 import Trade from '../../components/Trade/Trade';

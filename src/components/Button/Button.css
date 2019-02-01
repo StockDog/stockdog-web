@@ -11,14 +11,20 @@ body {
   height: 100%; }
 
 .Button button {
-  background-color: #3ee7ad;
-  border: none;
   font-family: 'Assistant';
   font-size: 20px;
   padding: 10px 0px;
   color: #f7f8f9;
   border-radius: 3px;
   cursor: pointer; }
+
+.button-normal button {
+  background-color: #3ee7ad;
+  border: none; }
+
+.button-outline button {
+  background-color: transparent;
+  border: 2px #3ee7ad solid; }
 
 .Button button:hover {
   background-color: #18c187; }

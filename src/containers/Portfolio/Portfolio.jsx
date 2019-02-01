@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../../components/Navigation/Navbar';
+import Navbar from '../../components/Navigation/Navbar/Navbar';
 import Graph from '../../components/Graph/Graph';
 import Listing from '../../components/Listing/Listing';
 import News from '../../components/News/News';

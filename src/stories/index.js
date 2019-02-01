@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { storiesOf } from '@storybook/react';
 import Listing from '../components/Listing/Listing';
 import Graph from '../components/Graph/Graph';
-import Navbar from '../components/Navigation/Navbar';
+import Navbar from '../components/Navigation/Navbar/Navbar';
 import News from '../components/News/News';
 import Portfolio from '../containers/Portfolio/Portfolio';
 import Stock from '../containers/Stock/Stock';
@@ -12,6 +12,7 @@ import Trade from '../components/Trade/Trade';
 import Transaction from '../components/Trade/Transaction/Transaction';
 import Button from '../components/Button/Button';
 import Article from '../components/Article/Article';
+import JoinCreateLeagueBtn from '../components/Navigation/JoinCreateLeagueBtn/JoinCreateLeague';
 
 
 const listingProps = {
@@ -137,3 +138,7 @@ storiesOf('Article', module)
       <Article title={'About'}
          content={'Advanced Micro Devices, Inc. engages in the provision of semiconductor businesses. It operates through the Computing and Graphics and Enterprise, Embedded and Semi-Custom segments.'}
       />);
+
+storiesOf('JoinCreateLeagueBtn', module).add('default', () => 
+  <JoinCreateLeagueBtn />
+);
