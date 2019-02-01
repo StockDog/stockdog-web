@@ -86,7 +86,7 @@ export class Registration extends Component {
         <form className="register-form">
           <div className="company-logo" />
           {registerError && (
-            <div className="form-error">Please enter valid input into required fields...</div>
+            <div className="form-error">Please enter valid input...</div>
           )}
           <div className="form-group">
             <input

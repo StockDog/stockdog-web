@@ -15,8 +15,8 @@ body {
   min-height: 4.8rem;
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   background-color: #212121; }
 
 .register-form {
@@ -27,22 +27,21 @@ body {
   .register-form .company-logo {
     height: 17.5rem;
     width: 17.5rem;
-    margin-bottom: 1.2rem;
     text-align: center;
     background-image: url("../../img/logo.png");
     background-repeat: no-repeat;
     background-size: cover; }
   .register-form .form-error {
     font-size: 1.6rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 2rem;
     color: #ff413b;
     font-weight: bold;
     text-align: center; }
   .register-form .form-group {
     position: relative;
-    height: 5rem;
+    height: 2rem;
     width: 80%;
-    margin-bottom: 1rem; }
+    margin-bottom: 2rem; }
     .register-form .form-group input {
       height: 100%;
       width: 100%;
@@ -69,17 +68,19 @@ body {
       background-size: cover; }
   .register-form .register-btn {
     font-weight: 300;
-    margin-top: 1rem;
     border: 1px solid #3ee7ad;
+    padding: 1rem 0;
     border-radius: 30px;
     background-color: #212121;
-    height: 4rem;
+    height: 1rem;
     width: 100%;
     text-transform: uppercase;
     font-size: 1.8rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #f7f8f9; }
+    color: #f7f8f9;
+    transition: color 500ms; }
     .register-form .register-btn:hover {
-      cursor: pointer; }
+      cursor: pointer;
+      color: #3ee7ad; }
