@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './Registration.css';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import { withAlert } from 'react-alert';
 import { compose } from 'redux';
+import { registerUser } from '../../api/api';
 
 export class Registration extends Component {
   constructor(props) {
@@ -36,24 +36,19 @@ export class Registration extends Component {
     return doesPasswordRegexMatchPassword;
   };
 
-  registerUser = async () => {
-    const {
-        firstName, lastName, email, password,
-      } = this.state,
-      requestBody = {
-        firstName,
-        lastName,
-        email,
-        password,
-      };
-
-    await axios.post('http://localhost:5005/api/v1.0/users', requestBody);
-  };
-
   handleRegisterClick = () => {
     if (this.isValidRegistration()) {
       try {
-        this.registerUser();
+        const {
+            firstName, lastName, email, password,
+          } = this.state,
+          userInfo = {
+            firstName,
+            lastName,
+            email,
+            password,
+          };
+        registerUser(userInfo);
         this.setState({
           firstName: '',
           lastName: '',
@@ -82,12 +77,10 @@ export class Registration extends Component {
       firstName, lastName, email, password, registerError,
     } = this.state;
     return (
-      <div className="register-page">
+      <div className="Registration">
         <form className="register-form">
           <div className="company-logo" />
-          {registerError && (
-            <div className="form-error">Please enter valid input...</div>
-          )}
+          {registerError && <div className="form-error">Please enter valid input...</div>}
           <div className="form-group">
             <input
               onChange={this.handleInputChange}
