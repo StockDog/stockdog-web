@@ -11,7 +11,7 @@ import Trade from '../components/Trade/Trade';
 import Transaction from '../components/Trade/Transaction/Transaction';
 import Button from '../components/Button/Button';
 import Article from '../components/Article/Article';
-import Registration from '../components/Registration/Registration';
+import Registration from '../containers/Registration/Registration';
 
 const listingProps = {
   title: 'Portfolio',
