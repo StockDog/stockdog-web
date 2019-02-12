@@ -26,6 +26,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "lint": "eslint src/**/*.js",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "NODE_PATH=src PORT=5000 react-scripts start",
