@@ -1,0 +1,50 @@
+/* Colors
+-----------------------------------------------------------------------------*/
+/*===========================================================================*/
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Assistant', sans-serif; }
+
+body {
+  background-color: #212121;
+  height: 100%; }
+
+.JoinCreateLeague {
+  text-align: center;
+  line-height: 30px;
+  font-size: 40px;
+  background-color: #212121;
+  width: 30px;
+  height: 30px;
+  color: #444444;
+  cursor: pointer; }
+
+.JoinCreateLeague:hover {
+  color: #3ee7ad; }
+
+.joincreateleague-modal {
+  padding: 50px; }
+
+.joincreateleague-league-action-type-select {
+  width: 250px; }
+
+.joincreateleague-modal-content {
+  width: 250px; }
+
+.joincreateleague-modal-content input {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 2px;
+  border: 1px solid #d3d3d3;
+  width: 250px; }
+
+.joincreateleague-modal-content label {
+  display: block;
+  margin: 10px 0 5px 0; }
+
+.joincreateleague-create-league-error-msg {
+  color: #ff413b; }
+
+.Button {
+  margin-top: 20px; }

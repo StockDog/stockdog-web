@@ -9,14 +9,9 @@
    cursor: pointer;
 }
 
-.button-normal button {
+.Button button {
    background-color: $primary-color;
    border: none;
-}
-
-.button-outline button {
-   background-color: transparent;
-   border: 2px $primary-color solid;
 }
 
 .Button button:hover {

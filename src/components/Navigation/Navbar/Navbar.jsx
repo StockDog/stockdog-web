@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import JoinCreateLeagueBtn from '../JoinCreateLeagueBtn/JoinCreateLeague';
+import JoinCreateLeague from '../JoinCreateLeagueBtn/JoinCreateLeague';
 import './Navbar.css';
 
 import { Award, User } from 'react-feather';
@@ -39,7 +39,7 @@ class Navbar extends Component {
   render() {
     return (
       <div className="Navbar">
-        <JoinCreateLeagueBtn />
+        <JoinCreateLeague />
         <div className="navbar-portfolio-dropdown">
           <div className="navbar-portfolio-dropdown-btn" onClick={this.toggleDropdown}>
             <span>Week league</span>
@@ -64,12 +64,12 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   history: PropTypes.object.isRequired,
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      location: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  // links: PropTypes.arrayOf(
+  //   PropTypes.shape({
+  //     title: PropTypes.string.isRequired,
+  //     location: PropTypes.string.isRequired,
+  //   }),
+  // ).isRequired,
 };
 
 export default withRouter(Navbar);

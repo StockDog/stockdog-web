@@ -16,7 +16,9 @@ const getRequestConfig = () => {
 
 const urls = {
    charts: baseURL + '/charts',
-   transactions: baseURL + '/transactions'
+   transactions: baseURL + '/transactions',
+   portfolios: baseURL + '/portfolios',
+   leagues: baseURL + '/leagues'
 };
 
 /**
@@ -38,3 +40,23 @@ export const getStockHistory = async (params) => {
 export const createTransaction = async (params) => {
    return await axios.post(urls.transactions, params, getRequestConfig());
 };
+
+/**
+ * params:
+ * inviteCode
+ * name
+ */
+export const joinLeague = async (params) => {
+   return await axios.post(urls.portfolios, params, getRequestConfig());
+}
+
+/**
+ * params:
+ * name
+ * startPos
+ * start
+ * end
+ */
+export const createLeague = async (params) => {
+   return await axios.post(urls.leagues, params, getRequestConfig());
+}
