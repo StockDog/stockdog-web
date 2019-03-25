@@ -79,6 +79,11 @@ body {
   top: 20px;
   cursor: pointer; }
 
+.JoinCreateLeague {
+  position: absolute;
+  top: 14px;
+  left: 5px; }
+
 @media only screen and (max-width: 400px) {
   .navbar-sidebar-points {
     display: none; }

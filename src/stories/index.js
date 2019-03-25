@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+
 import { storiesOf } from '@storybook/react';
 import Listing from '../components/Listing/Listing';
 import Graph from '../components/Graph/Graph';
-import Navbar from '../components/Navigation/Navbar';
+import Navbar from '../components/Navigation/Navbar/Navbar';
 import News from '../components/News/News';
 import Portfolio from '../containers/Portfolio/Portfolio';
 import Stock from '../containers/Stock/Stock';
@@ -11,7 +12,8 @@ import Trade from '../components/Trade/Trade';
 import Transaction from '../components/Trade/Transaction/Transaction';
 import Button from '../components/Button/Button';
 import Article from '../components/Article/Article';
-import Registration from '../containers/Registration/Registration';
+import JoinCreateLeagueBtn from '../components/Navigation/JoinCreateLeagueBtn/JoinCreateLeague';
+
 
 const listingProps = {
   title: 'Portfolio',
@@ -117,24 +119,26 @@ storiesOf('Stock', module).add('default', () => (
 
 storiesOf('Trade', module).add('default', () => <Trade quantity={40} price={400.12} volume={2} />);
 
-storiesOf('Transaction', module).add('default', () => (
-  <Transaction isOpen buyingPower={2313} price={2.19} amountOwned={10} />
-));
+storiesOf('Transaction', module)
+  .add('default', () =>
+   <Transaction isOpen={true} buyingPower={2313} price={2.19} amountOwned={10}/>
+);
 
 storiesOf('Button', module)
-  .add('300px width', () => <Button text="Trade" width={300} />)
-  .add('200px width', () => <Button text="Trade" width={200} />)
-  .add('disabled', () => <Button text="Trade" width={200} isDisabled />);
+   .add('300px width', () =>
+      <Button text={"Trade"} width={300} />)
+   .add('200px width', () =>
+      <Button text={"Trade"} width={200} />)
+   .add('disabled', () =>
+      <Button text={"Trade"} width={200} isDisabled={true} />
+);
 
-storiesOf('Article', module).add('AMD', () => (
-  <Article
-    title="About"
-    content="Advanced Micro Devices, Inc. engages in the provision of semiconductor businesses. It operates through the Computing and Graphics and Enterprise, Embedded and Semi-Custom segments."
-  />
-));
+storiesOf('Article', module)
+   .add('AMD', () =>
+      <Article title={'About'}
+         content={'Advanced Micro Devices, Inc. engages in the provision of semiconductor businesses. It operates through the Computing and Graphics and Enterprise, Embedded and Semi-Custom segments.'}
+      />);
 
-storiesOf('Registration', module).add('default', () => (
-  <Router>
-    <Registration />
-  </Router>
-));
+storiesOf('JoinCreateLeagueBtn', module).add('default', () => 
+  <JoinCreateLeagueBtn />
+);

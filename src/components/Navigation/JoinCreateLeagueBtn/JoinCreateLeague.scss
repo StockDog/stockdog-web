@@ -1,0 +1,49 @@
+@import '../../../global/css/Global.scss';
+
+.JoinCreateLeague {
+   text-align: center;
+   line-height: 30px;
+   font-size: 40px;
+   background-color: $bg-color;
+   width: 30px;
+   height: 30px;
+   color: $bg-light-color;
+   cursor: pointer;
+}
+
+.JoinCreateLeague:hover {
+   color: $primary-color;
+}
+
+.joincreateleague-modal {
+   padding: 50px;
+}
+
+.joincreateleague-league-action-type-select {
+   width: 250px;
+}
+
+.joincreateleague-modal-content {
+   width: 250px;
+}
+
+.joincreateleague-modal-content input {
+   padding: 8px;
+   font-size: 16px;
+   border-radius: 2px;
+   border: 1px solid #d3d3d3;
+   width: 250px;
+}
+
+.joincreateleague-modal-content label {
+   display: block;
+   margin: 10px 0 5px 0;
+}
+
+.joincreateleague-create-league-error-msg {
+   color: $red-color;
+}
+
+.Button {
+   margin-top: 20px;
+}

@@ -12,7 +12,7 @@ const Button = props => (
 
 Button.propTypes = {
   width: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired
 };
 
 export default Button;

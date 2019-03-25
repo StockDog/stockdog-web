@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import JoinCreateLeague from '../JoinCreateLeagueBtn/JoinCreateLeague';
 import './Navbar.css';
 
-import { Menu, Award, User } from 'react-feather';
+import { Award, User } from 'react-feather';
 
 const primaryColor = '#3ee7ad';
 
@@ -38,9 +39,7 @@ class Navbar extends Component {
   render() {
     return (
       <div className="Navbar">
-        <div className="navbar-sidebar-menu-btn">
-          <Menu color="white" size={36} />
-        </div>
+        <JoinCreateLeague />
         <div className="navbar-portfolio-dropdown">
           <div className="navbar-portfolio-dropdown-btn" onClick={this.toggleDropdown}>
             <span>Week league</span>
@@ -65,12 +64,12 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   history: PropTypes.object.isRequired,
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      location: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  // links: PropTypes.arrayOf(
+  //   PropTypes.shape({
+  //     title: PropTypes.string.isRequired,
+  //     location: PropTypes.string.isRequired,
+  //   }),
+  // ).isRequired,
 };
 
 export default withRouter(Navbar);
