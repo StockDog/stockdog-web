@@ -39,7 +39,7 @@ class JoinCreateLeague extends Component {
     this.setState({ isModalOpen: false });
   };
 
-  handleSelectChange = (selectedOption) => {
+  handleLeagueActionTypeChange = (selectedOption) => {
     this.setState({ selectedOption });
   }
 
@@ -204,7 +204,7 @@ class JoinCreateLeague extends Component {
               defaultValue={selectOptions[0]}
               className="joincreateleague-league-action-type-select"
               value={this.state.selectedOption}
-              onChange={this.handleSelectChange}
+              onChange={this.handleLeagueActionTypeChange}
               options={selectOptions}
               isSearchable={false}
             />
