@@ -8,6 +8,7 @@ import store from './store/store';
 
 // Containers
 import Stock from './containers/Stock/Stock';
+import Portfolio from './containers/Portfolio/Portfolio';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
         <Router>
           <div className="App">
             <UnauthenticatedRoute path="/stock/:ticker" component={Stock} appProps={this.props} />
+            <UnauthenticatedRoute exact path="/" component={Portfolio} appProps={this.props} />
 
             {/* <UnauthenticatedRoute exact path="/" component={Login}
                     appProps={this.props}/>
