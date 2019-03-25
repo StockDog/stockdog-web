@@ -15,11 +15,23 @@ const getRequestConfig = () => {
 };
 
 const urls = {
+   users: `${baseURL}/users`,
    charts: `${baseURL}/charts`,
    transactions: `${baseURL}/transactions`,
    portfolios: `${baseURL}/portfolios`,
    leagues: `${baseURL}/leagues`
 };
+
+/**
+ * params:
+ * firstName
+ * lastName
+ * email
+ * password
+ */
+export const registerUser = async (userInfo) => {		
+   await axios.post(users, userInfo);
+}
 
 /**
  * params:
