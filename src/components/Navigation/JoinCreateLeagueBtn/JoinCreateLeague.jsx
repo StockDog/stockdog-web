@@ -72,10 +72,7 @@ class JoinCreateLeague extends Component {
         break;
     }
 
-    // Only check date validation if both fields are filled
-    if (currentStart && 
-        currentEnd && 
-        !this.validateDates(currentStart, currentEnd)) {
+    if (!this.validateDates(currentStart, currentEnd)) {
       newState['createLeagueErrorMsg'] = 'Start date cannot be before today and the end date must be after the start date.';
       this.setState(newState);
     }
