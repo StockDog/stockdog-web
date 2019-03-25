@@ -15,10 +15,10 @@ const getRequestConfig = () => {
 };
 
 const urls = {
-   charts: baseURL + '/charts',
-   transactions: baseURL + '/transactions',
-   portfolios: baseURL + '/portfolios',
-   leagues: baseURL + '/leagues'
+   charts: `${baseURL}/charts`,
+   transactions: `${baseURL}/transactions`,
+   portfolios: `${baseURL}/portfolios`,
+   leagues: `${baseURL}/leagues`
 };
 
 /**
