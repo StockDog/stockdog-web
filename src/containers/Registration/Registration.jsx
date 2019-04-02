@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import './Registration.css';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import ReactTooltip from 'react-tooltip';
 import { withAlert } from 'react-alert';
 import { compose } from 'redux';
 import { registerUser } from '../../api/api';
+import { Info } from 'react-feather';
 
 export class Registration extends Component {
   constructor(props) {
@@ -40,8 +42,8 @@ export class Registration extends Component {
     if (this.isValidRegistration()) {
       try {
         const {
-            firstName, lastName, email, password,
-          } = this.state,
+          firstName, lastName, email, password,
+        } = this.state,
           userInfo = {
             firstName,
             lastName,
@@ -80,7 +82,7 @@ export class Registration extends Component {
       <div className="Registration">
         <form className="register-form">
           <div className="company-logo" />
-          {registerError && <div className="form-error">Please enter valid input...</div>}
+          {registerError && <div className="form-error">Please check input.</div>}
           <div className="form-group">
             <input
               onChange={this.handleInputChange}
@@ -120,6 +122,14 @@ export class Registration extends Component {
               value={password}
               placeholder="password"
             />
+            <div className="register-info-icon">
+              <a data-tip data-for='password-info'>
+                <Info color="#FFF" />
+              </a>
+              <ReactTooltip id='password-info' type='warning' effect='solid'>
+                <span>Must be at least 8 characters (max. 32), and at least 1 uppercase letter, 1 lowercase letter, and 1 letter.<br /> No special characters are supported.</span>
+              </ReactTooltip>
+            </div>
           </div>
           <div className="register-btn" onClick={this.handleRegisterClick}>
             register
