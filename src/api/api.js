@@ -29,8 +29,17 @@ const urls = {
  * email
  * password
  */
-export const registerUser = async (userInfo) => {		
-   await axios.post(users, userInfo);
+export const registerUser = async (params) => {		
+   await axios.post(urls.users, params, getRequestConfig());
+}
+
+/**
+ * params:
+ * email
+ * password
+ */
+export const loginUser = async (params) => {
+   return await axios.post(`${urls.users}/session`, params, getRequestConfig());
 }
 
 /**

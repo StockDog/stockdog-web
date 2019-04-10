@@ -58,6 +58,7 @@ export class Registration extends Component {
           password: '',
           registerError: false,
         });
+        this.props.info.show('Registration successful.');
         this.props.history.push('/login');
       } catch (error) {
         this.props.alert.show(error);
@@ -81,7 +82,7 @@ export class Registration extends Component {
     return (
       <div className="Registration">
         <form className="register-form">
-          <div className="company-logo" />
+          <a href='/'><div className="company-logo" /></a>
           {registerError && <div className="form-error">Please check input.</div>}
           <div className="form-group">
             <input

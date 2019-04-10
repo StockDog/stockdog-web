@@ -3,13 +3,14 @@ import {
 } from 'redux';
 import reduxLogger from 'redux-logger';
 import thunk from 'redux-thunk';
+import { globalReducer } from '../global/state/globalReducer';
 
 const middleware = [thunk];
 
 middleware.push(reduxLogger);
 
 const store = createStore(
-  combineReducers({}),
+  combineReducers({global: globalReducer}),
   compose(
     applyMiddleware(...middleware),
     /*eslint-disable */

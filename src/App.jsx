@@ -7,6 +7,8 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 
 // Containers
+import { Login } from './containers/Registration/Login'
+import Registration from './containers/Registration/Registration';
 import Stock from './containers/Stock/Stock';
 import Portfolio from './containers/Portfolio/Portfolio';
 
@@ -18,6 +20,8 @@ class App extends Component {
           <div className="App">
             <UnauthenticatedRoute path="/stock/:ticker" component={Stock} appProps={this.props} />
             <UnauthenticatedRoute exact path="/" component={Portfolio} appProps={this.props} />
+            <UnauthenticatedRoute exact path="/login" component={Login} appProps={this.props}/>
+            <UnauthenticatedRoute exact path="/registration" component={Registration} appProps={this.props}/>
 
             {/* <UnauthenticatedRoute exact path="/" component={Login}
                     appProps={this.props}/>
