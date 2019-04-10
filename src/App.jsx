@@ -7,8 +7,8 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 
 // Containers
-import { Login } from './containers/Registration/Login'
-import Registration from './containers/Registration/Registration';
+import { Login } from './containers/User/Login'
+import Registration from './containers/User/Registration';
 import Stock from './containers/Stock/Stock';
 import Portfolio from './containers/Portfolio/Portfolio';
 
