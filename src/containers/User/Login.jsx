@@ -5,10 +5,10 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withAlert } from 'react-alert';
 import { loginUser } from '../../api/api';
-import { setAuthToken, setUserId } from '../../global/state/globalActions';
+import { setUserInfo } from '../../global/state/globalActions';
 import { connect } from 'react-redux';
 
-export default class Login extends Component {
+class Login extends Component {
    constructor(props) {
       super(props);
 
@@ -27,12 +27,8 @@ export default class Login extends Component {
       try {
          const { email, password } = this.state;
          const res = await loginUser({ email, password });
-         this.setState({
-            email: '',
-            password: ''
-         });
-         this.props.setAuthToken(res.data.token);
-         this.props.setUserId(res.data.userId);
+
+         this.props.setUserInfo(res.data.userId, res.data.token);
          this.props.history.push('/');
       } catch (error) {
          this.props.alert.error('Failed to login. Please check username and password.');
@@ -82,10 +78,6 @@ Login.propTypes = {
    alert: PropTypes.object.isRequired,
 };
 
-const ConnectedLogin = withRouter(withAlert(connect(null, {
-   setAuthToken, setUserId
+export default withRouter(withAlert(connect(null, {
+   setUserInfo
 })(Login)));
-
-export {
-   ConnectedLogin as Login
-};

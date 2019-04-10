@@ -1,22 +1,13 @@
 export const GLOBAL_ACTION_TYPES = {
-  SET_AUTH_TOKEN: 'SET_AUTH_TOKEN',
-  SET_USER_ID: 'SET_USER_ID'
+  SET_USER_INFO: 'SET_USER_INFO'
 };
 
-export function setAuthToken(token) {
+export function setUserInfo(userId, token) {
   return {
-    type: GLOBAL_ACTION_TYPES.SET_AUTH_TOKEN,
+    type: GLOBAL_ACTION_TYPES.SET_USER_INFO,
     payload: {
+      userId,
       token
-    }
-  }
-};
-
-export function setUserId(id) {
-  return {
-    type:GLOBAL_ACTION_TYPES.SET_USER_ID,
-    payload: {
-      id
     }
   }
 };
