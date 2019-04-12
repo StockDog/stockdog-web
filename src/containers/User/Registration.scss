@@ -36,9 +36,8 @@
         width: 80%;
         margin-bottom: 2rem;
         input {
-            height: 100%;
             width: 100%;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             background-color: $bg-color;
             border: none;
             color: gray;
@@ -52,16 +51,10 @@
                 color: white;
             }
         }
-        .info-icon {
+        .register-info-icon {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            right: -4rem;
-            width: 2.4rem;
-            height: 2.4rem;
-            background-image: url("../../img/feather-icons/info.svg");
-            background-repeat: no-repeat;
-            background-size: cover;
+            top: 0;
+            right: 0;
         }
     }
     .register-btn {
@@ -71,7 +64,7 @@
         border-radius: 2.2rem;
         background-color: $bg-color;
         height: 1rem;
-        width: 100%;
+        width: 80%;
         text-transform: uppercase;
         font-size: 1.4rem;
         display: flex;
