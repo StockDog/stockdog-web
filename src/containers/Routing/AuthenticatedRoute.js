@@ -24,8 +24,8 @@ class AuthenticatedRoute extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    userId: global.userId,
-    token: global.token
+    userId: state.global.userId,
+    token: state.global.token
   };
 }
 

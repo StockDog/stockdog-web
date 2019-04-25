@@ -12,8 +12,6 @@ class Login extends Component {
    constructor(props) {
       super(props);
 
-      console.log('login page');
-
       this.state = {
          email: '',
          password: ''
@@ -31,7 +29,7 @@ class Login extends Component {
          const res = await loginUser({ email, password });
 
          this.props.setUserInfo(res.data.userId, res.data.token);
-         this.props.history.push('/');
+         this.props.history.push('/portfolio');
       } catch (error) {
          this.props.alert.error('Failed to login. Please check username and password.');
       }

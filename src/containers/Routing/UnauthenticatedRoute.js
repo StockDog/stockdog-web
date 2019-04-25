@@ -9,7 +9,6 @@ class UnauthenticatedRoute extends Component {
     super(props);
 
     this.isAuthenticated = authenticated(props.userId, props.token);
-    console.log(this.isAuthenticated);
   }
   render() {
     const Component = this.props.component;
@@ -26,8 +25,8 @@ class UnauthenticatedRoute extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    userId: global.userId,
-    token: global.token
+    userId: state.global.userId,
+    token: state.global.token
   };
 }
 
