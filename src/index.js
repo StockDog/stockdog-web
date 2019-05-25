@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { CookiesProvider } from 'react-cookie';
 import { Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 import App from './App';
@@ -15,11 +14,9 @@ const options = {
 };
 
 ReactDOM.render(
-  <CookiesProvider>
-    <AlertProvider template={AlertTemplate} {...options}>
-      <App />
-    </AlertProvider>
-  </CookiesProvider>,
+  <AlertProvider template={AlertTemplate} {...options}>
+    <App />
+  </AlertProvider>,
   // eslint-disable-next-line
   document.getElementById('root'),
 );

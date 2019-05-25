@@ -146,7 +146,8 @@ Registration.propTypes = {
   alert: PropTypes.object.isRequired,
 };
 
+// export default Registration;
+
 export default compose(
   withAlert,
-  withRouter,
 )(Registration);

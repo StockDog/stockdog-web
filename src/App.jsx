@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import AuthenticatedRoute from 'containers/Routing/AuthenticatedRoute';
 import UnauthenticatedRoute from 'containers/Routing/UnauthenticatedRoute';
-import { withCookies } from 'react-cookie';
 import { Provider } from 'react-redux';
 import store from './store/store';
 
@@ -19,7 +18,8 @@ class App extends Component {
         <Router>
           <Switch>
             <AuthenticatedRoute path="/portfolio" component={Portfolio} appProps={this.props} />
-            <UnauthenticatedRoute exact path="/" component={Login} appProps={this.props}/>
+            <UnauthenticatedRoute exact path="/" component={Registration} appProps={this.props}/>
+            {/* <UnauthenticatedRoute path="/registration" component={Registration} appProps={this.props}/> */}
           </Switch>
           {/* <div className="App">
             <UnauthenticatedRoute path="/stock/:ticker" component={Stock} appProps={this.props} />
@@ -38,4 +38,4 @@ class App extends Component {
   }
 }
 
-export default withCookies(App);
+export default App;

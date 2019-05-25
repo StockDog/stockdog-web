@@ -11,15 +11,15 @@ class UnauthenticatedRoute extends Component {
     this.isAuthenticated = authenticated(props.userId, props.token);
   }
   render() {
-    const Component = this.props.component;
+    const RenderingComponent = this.props.component;
 
-    return (
-      <Route
-        render={() => this.isAuthenticated ? 
-          <Redirect to={{pathname: "/portfolio", state: { from: this.props.location }}} /> 
-          : <Component {...this.props.appProps}/>}
-      />
-    );
+    if (this.isAuthenticated) {
+      return <Redirect to={{pathname: "/portfolio", state: { from: this.props.location }}} />
+    }
+
+    return (<div>
+      {RenderingComponent({...this.props.appProps})}
+    </div>);
   }
 };
 

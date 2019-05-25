@@ -1,5 +1,8 @@
 export function authenticated(userId, token) {
-  if (userId === undefined || token === undefined) {
+  console.log('Checking authentication.');
+  console.log(userId);
+  console.log(token);
+  if (userId === null || token === null) {
     return false;
   }
   return true;

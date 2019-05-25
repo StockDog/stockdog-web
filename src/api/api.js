@@ -81,3 +81,14 @@ export const joinLeague = async (params) => {
 export const createLeague = async (params) => {
    return await axios.post(urls.leagues, params, getRequestConfig());
 }
+
+export const getPortfoliosForUser = async () => {
+   return await axios.get(urls.portfolios, getRequestConfig());
+}
+
+/**
+ * portfolioId
+ */
+export const getPortfolio = async (params) => {
+   return await axios.get(`${urls.portfolios}/${params.portfolioId}`, getRequestConfig());
+}
