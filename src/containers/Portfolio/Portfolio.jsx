@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { withAlert } from 'react-alert';
 import Navbar from '../../components/Navigation/Navbar/Navbar';
 import Graph from '../../components/Graph/Graph';
 import Listing from '../../components/Listing/Listing';
@@ -97,7 +96,7 @@ class Portfolio extends Component {
       }
     }
     catch {
-      this.props.alert.error('Failed to gather portfolios.');
+      alert('Failed to gather portfolios.');
     }
   }
 
@@ -107,7 +106,7 @@ class Portfolio extends Component {
       this.setState({portfolioItems: portfolio.items});
     }
     catch {
-      this.props.alert.error('Failed to load portfolio.');
+      alert('Failed to load portfolio.');
     }
   }
   
@@ -164,4 +163,4 @@ const mapDispatchToProps = () => {
   }
 };
 
-export default withRouter(withAlert(connect(mapStateToProps, mapDispatchToProps)(Portfolio)));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Portfolio));

@@ -1,25 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { authenticated } from '../../utils/utils';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
-class AuthenticatedRoute extends Component {
-  constructor(props) {
-    super(props);
-
-    this.isAuthenticated = authenticated(props.userId, props.token);
-  }
-  render() {
-    const Component = this.props.component;
-
-    return (
-      <Route
-        render={() => this.isAuthenticated ? <Component {...this.props.appProps}/> : <Redirect to={{pathname: "/", state: { from: this.props.location }}} />}
-      />
-      
-    );
-  }
+const AuthenticatedRoute = ({ component: Component, userId, token, ...rest }) => {
+  const isAuthenticated = authenticated(userId, token);
+  return (
+    <Route {...rest} render={(props) => (
+      isAuthenticated
+        ? <Component {...props} />
+        : <Redirect to='/login' />
+    )} />
+  )
 };
 
 const mapStateToProps = (state) => {
@@ -29,4 +21,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default withRouter(connect(mapStateToProps, null)(AuthenticatedRoute));
+export default connect(mapStateToProps)(AuthenticatedRoute);

@@ -8,7 +8,6 @@ import store from './store/store';
 // Containers
 import Login from './containers/User/Login'
 import Registration from './containers/User/Registration';
-import Stock from './containers/Stock/Stock';
 import Portfolio from './containers/Portfolio/Portfolio';
 
 class App extends Component {
@@ -17,10 +16,10 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Switch>
-            <Login />
             {/* <AuthenticatedRoute path="/portfolio" component={Portfolio} appProps={this.props} /> */}
-            {/* <UnauthenticatedRoute exact path="/" component={Login}/> */}
-            {/* <UnauthenticatedRoute path="/registration" component={Registration} appProps={this.props}/> */}
+            <UnauthenticatedRoute exact path="/" component={Login}/>
+            <UnauthenticatedRoute path="/registration" component={Registration} appProps={this.props}/>
+            <UnauthenticatedRoute path="/portfolio" component={Portfolio} appProps={this.props} />
           </Switch>
           {/* <div className="App">
             <UnauthenticatedRoute path="/stock/:ticker" component={Stock} appProps={this.props} />

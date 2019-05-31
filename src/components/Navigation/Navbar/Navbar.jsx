@@ -62,14 +62,4 @@ class Navbar extends Component {
   }
 }
 
-Navbar.propTypes = {
-  history: PropTypes.object.isRequired,
-  // links: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //     title: PropTypes.string.isRequired,
-  //     location: PropTypes.string.isRequired,
-  //   }),
-  // ).isRequired,
-};
-
 export default withRouter(Navbar);

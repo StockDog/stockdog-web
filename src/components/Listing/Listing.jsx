@@ -17,7 +17,7 @@ class Listing extends Component {
       return null;
     }
 
-    const listingElements = listings.map((listing) => {
+    const listingElements = listings.map((listing, index) => {
       // Need to do the gain element seperately because
       // it changes depending on if its negative or positive
       const prefixSymbol = listing.gain >= 0 ? '+' : '',
@@ -33,7 +33,7 @@ class Listing extends Component {
         amountElement = <div className="listing-item-amount">{`${listing.shareCount} shares`}</div>;
       }
       const listingElement = (
-        <div className="listing-item" key={listing.ticker}>
+        <div className="listing-item" key={listing.ticker + index}>
           <div className="listing-item-title">{listing.ticker}</div>
           <div className="listing-item-desc">{listing.companyName}</div>
           <div className="listing-item-price-info">
