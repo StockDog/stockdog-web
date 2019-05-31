@@ -29,7 +29,8 @@ class Login extends Component {
          this.props.setUserInfo(res.data.userId, res.data.token);
          this.props.history.push('/portfolio');
       } catch (error) {
-         alert('Failed to login. Please check username and password.' + error);
+         alert('Failed to login. Please check username and password.');
+         console.log(error);
       }
    };
 

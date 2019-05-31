@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 const UnauthenticatedRoute = ({ component: Component, userId, token, ...rest }) => {
   const isAuthenticated = authenticated(userId, token);
-  console.log(Component);
   return (
     <Route {...rest} render={(props) => (
       !isAuthenticated

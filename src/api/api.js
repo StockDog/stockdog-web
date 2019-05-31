@@ -1,4 +1,5 @@
 import axios from 'axios';
+import store from '../store/store';
 
 // const baseURL = 'http://198.199.100.209:5005/api';
 const baseURL = 'http://localhost:5005/api/v1.0';
@@ -6,9 +7,7 @@ const getRequestConfig = () => {
    return {
       headers: {
          'Content-Type': 'application/json',
-         'Authorization': 'token 10cbb8be976d8db1efcca8c60fd7e3594f74772fd877d36afc825ed6df3b7829'
-         // Need to implement login register
-         // 'Authorization': store.getState().auth.token
+         'Authorization': `token ${store.getState().global.token}`
       },
       data: {}
    }

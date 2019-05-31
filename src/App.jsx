@@ -16,10 +16,9 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Switch>
-            {/* <AuthenticatedRoute path="/portfolio" component={Portfolio} appProps={this.props} /> */}
-            <UnauthenticatedRoute exact path="/" component={Login}/>
+            <AuthenticatedRoute path="/portfolio" component={Portfolio} appProps={this.props} />
+            <UnauthenticatedRoute exact path="/" component={Login} appProps={this.props} />
             <UnauthenticatedRoute path="/registration" component={Registration} appProps={this.props}/>
-            <UnauthenticatedRoute path="/portfolio" component={Portfolio} appProps={this.props} />
           </Switch>
           {/* <div className="App">
             <UnauthenticatedRoute path="/stock/:ticker" component={Stock} appProps={this.props} />
