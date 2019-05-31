@@ -4,30 +4,39 @@ import { authenticated } from '../../utils/utils';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-class UnauthenticatedRoute extends Component {
-  constructor(props) {
-    super(props);
+const UnauthenticatedRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={(props) => (
+    true
+      ? <Component {...props} />
+      : <Redirect to='/login' />
+  )} />
+)
 
-    this.isAuthenticated = authenticated(props.userId, props.token);
-  }
-  render() {
-    const RenderingComponent = this.props.component;
+export default UnauthenticatedRoute;
 
-    if (this.isAuthenticated) {
-      return <Redirect to={{pathname: "/portfolio", state: { from: this.props.location }}} />
-    }
+// class UnauthenticatedRoute extends Component {
+//   constructor(props) {
+//     super(props);
 
-    return (<div>
-      {RenderingComponent({...this.props.appProps})}
-    </div>);
-  }
-};
+//     this.isAuthenticated = authenticated(props.userId, props.token);
+//   }
+//   render() {
+//     const Component = this.props.component;
+//     return (
+//       <Route {...this.props} render={(props) => (
+//         this.isAuthenticated === true
+//           ? <Component {...props} />
+//           : <Redirect to='/login' />
+//       )} />
+//     );
+//   }
+// };
 
-const mapStateToProps = (state) => {
-  return {
-    userId: state.global.userId,
-    token: state.global.token
-  };
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     userId: state.global.userId,
+//     token: state.global.token
+//   };
+// }
 
-export default withRouter(connect(mapStateToProps, null)(UnauthenticatedRoute));
+// export default withRouter(connect(mapStateToProps, null)(UnauthenticatedRoute));

@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { loginUser } from '../../api/api';
 import { setUserInfo } from '../../global/state/globalActions';
 import { connect } from 'react-redux';
+import { compose } from '../../../../../Library/Caches/typescript/3.4.3/node_modules/redux';
 
 class Login extends Component {
    constructor(props) {
@@ -78,6 +79,16 @@ Login.propTypes = {
    alert: PropTypes.object.isRequired,
 };
 
-export default withRouter(withAlert(connect(null, {
-   setUserInfo
-})(Login)));
+
+// export default connect(null, {
+//    setUserInfo
+// })(Login);
+
+export default compose(
+   withRouter,
+   connect(null, {setUserInfo})
+);
+
+// export default withRouter(withAlert(connect(null, {
+//    setUserInfo
+// })(Login)));
