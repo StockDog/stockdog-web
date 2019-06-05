@@ -74,7 +74,7 @@ const headlines = [
 ];
 
 class Portfolio extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -82,35 +82,52 @@ class Portfolio extends Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.getAllPortfolios().then(() => this.getCurrentPortfolio());
   }
 
   getAllPortfolios = async () => {
     try {
-      const portfolios = await getPortfoliosForUser();
+      const response = await getPortfoliosForUser();
+      const portfolios = response.data;
+      console.log(portfolios);
       this.props.setPortfolios(portfolios);
       // Make sure the user has portfolios and hasn't set the currentPortfolioId
-      if (portfolios.length > 0 && this.props.currentPortfolioId !== -1) {
+      if (portfolios.length > 0 && this.props.currentPortfolioId === -1) {
         this.props.setCurrentPortfolio(portfolios[0].id);
       }
     }
-    catch {
+    catch (e) {
       alert('Failed to gather portfolios.');
     }
   }
 
   getCurrentPortfolio = () => {
     try {
-      const portfolio = this.props.portfolios[this.props.currentPortfolioId];
+      const { portfolios, currentPortfolioId } = this.props;
+      console.log(this.props.portfolios);
+      console.log(this.props.currentPortfolioId);
+      const portfolio = this.getPortfolioById(portfolios, currentPortfolioId);
+      console.log(portfolio);
       this.setState({portfolioItems: portfolio.items});
     }
-    catch {
+    catch (e) {
       alert('Failed to load portfolio.');
+      console.log(e);
     }
   }
-  
+
+  getPortfolioById = (portfolios, id) => {
+    console.log(portfolios);
+    for (const idx in portfolios) {
+      if (portfolios[idx].id === id) {
+        return portfolios[idx];
+      }
+    }
+  }
+
   render() {
+    console.log(this.state.portfolioItems);
     return (
       <div className="Portfolio">
         <Navbar
@@ -137,12 +154,12 @@ class Portfolio extends Component {
         />
         <div className="portfolio-listing-news-area">
           <div className="portfolio-listing-area">
-            <Listing listings={this.state.portfolioItems} />
-            <Listing {...watchListProps} />
+            <Listing title='Portfolio' listings={this.state.portfolioItems} />
+            {/* <Listing {...watchListProps} /> */}
           </div>
-          <div className="portfolio-news-area">
+          {/* <div className="portfolio-news-area">
             <News headlines={headlines} />
-          </div>
+          </div> */}
         </div>
       </div>
     )
@@ -156,11 +173,9 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = () => {
-  return {
-    setPortfolios,
-    setCurrentPortfolio
-  }
+const mapDispatchToProps = {
+  setPortfolios,
+  setCurrentPortfolio
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Portfolio));

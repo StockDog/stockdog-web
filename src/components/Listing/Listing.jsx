@@ -10,8 +10,15 @@ class Listing extends Component {
   componentDidMount() {
     this.generateListings();
   }
+  
+  componentDidUpdate(prevProps) {
+    if (prevProps.listings !== this.props.listings) {
+      this.generateListings();
+    }
+  }
 
   generateListings = () => {
+    console.log(this.props.listings);
     const { listings } = this.props;
     if (!listings) {
       return null;

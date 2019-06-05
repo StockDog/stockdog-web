@@ -4,6 +4,7 @@ export const ACTION_TYPES = {
 }
 
 export const setPortfolios = (portfolios) => {
+   console.log('action setPortfolios');
    return {
       type: ACTION_TYPES.SET_PORTFOLIOS,
       payload: {
