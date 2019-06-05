@@ -25,13 +25,14 @@ class Listing extends Component {
     }
 
     const listingElements = listings.map((listing, index) => {
+      const gain = Math.round(listing.gain* 10) / 10;
       // Need to do the gain element seperately because
       // it changes depending on if its negative or positive
-      const prefixSymbol = listing.gain >= 0 ? '+' : '',
-        colorClass = listing.gain >= 0 ? 'listing-up-color' : 'listing-down-color',
+      const prefixSymbol = gain >= 0 ? '+' : '',
+        colorClass = gain >= 0 ? 'listing-up-color' : 'listing-down-color',
         priceChangeElement = (
           <div className={`listing-item-price-change ${colorClass}`}>
-            {`${prefixSymbol}\n${listing.gain}`}
+            {`${prefixSymbol}\n${gain}`}
           </div>
         );
       // Need to do amount separately since 0 shows nothing
