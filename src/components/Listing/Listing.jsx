@@ -18,7 +18,6 @@ class Listing extends Component {
   }
 
   generateListings = () => {
-    console.log(this.props.listings);
     const { listings } = this.props;
     if (!listings) {
       return null;

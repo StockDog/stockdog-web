@@ -8,7 +8,6 @@ const initialState = {
 export function portfolioReducer(state = initialState, action) {
   switch (action.type) {
     case ACTION_TYPES.SET_PORTFOLIOS:
-      console.log('setting portfolios');
       return Object.assign({}, state, {
         portfolios: action.payload.portfolios
       });

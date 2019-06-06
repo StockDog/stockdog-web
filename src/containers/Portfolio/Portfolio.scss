@@ -7,7 +7,6 @@ body, html {
 
 .Graph { 
    margin: 0 auto;
-   margin-top: 20px;
 }
 
 .portfolio-listing-news-area {
@@ -40,5 +39,13 @@ body, html {
    z-index: -1;
    top: -520px;
    left: -1300px;
+}
+
+.portfolio-value {
+   text-align: center;
+   color: #FFFFFF;
+   margin: 10px 0;
+   font-size: 30px;
+   font-weight: 900;
 }
 

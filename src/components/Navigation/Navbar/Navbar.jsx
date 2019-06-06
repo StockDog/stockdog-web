@@ -22,7 +22,7 @@ class Navbar extends Component {
     const links = this.props.links;
 
     links.forEach((link) => {
-      linkHtmls.push(<p onClick={() => this.props.history.push(link.location)}>{link.title}</p>);
+      linkHtmls.push(<p key={link.title} onClick={() => this.props.history.push(link.location)}>{link.title}</p>);
     });
 
     return linkHtmls;
@@ -42,7 +42,7 @@ class Navbar extends Component {
         <JoinCreateLeague />
         <div className="navbar-portfolio-dropdown">
           <div className="navbar-portfolio-dropdown-btn" onClick={this.toggleDropdown}>
-            <span>Week league</span>
+            <span>{this.props.currentPortfolioName}</span>
           </div>
           {this.state.dropdownActive ? (
             <div className="navbar-portfolio-dropdown-content">{this.generateDropdownLinks()}</div>

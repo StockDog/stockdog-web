@@ -9,76 +9,15 @@ import { setPortfolios, setCurrentPortfolio } from './state/portfolioActions';
 import './Portfolio.css';
 import { getPortfoliosForUser } from '../../api/api';
 
-const listingProps = {
-  title: 'Portfolio',
-  listings: [
-    {
-      title: 'RAD',
-      desc: 'Rite Aid Corporation',
-      price: 200.53,
-      priceChange: 27.21,
-      amount: 20,
-    },
-    {
-      title: 'CAMT',
-      desc: 'Camtek LTD',
-      price: 4021.21,
-      priceChange: -120.23,
-      amount: 87,
-    },
-    {
-      title: 'WMT',
-      desc: 'Walmart Corporation',
-      price: 185.62,
-      priceChange: 2.45,
-      amount: 0,
-    },
-  ],
-};
-
-const watchListProps = {
-  title: 'Watchlist',
-  listings: [
-    {
-      title: 'ROKU',
-      desc: 'Roku Inc',
-      price: 38.93,
-      priceChange: -0.29,
-    },
-    {
-      title: 'BAC',
-      desc: 'Bank of America Corp',
-      price: 28.34,
-      priceChange: 0.68,
-    },
-  ],
-};
-
-const headlines = [
-  {
-    title: 'China may reject new trade talks if more tariffs imposed',
-    link: '/article1',
-  },
-  {
-    title: "Shiller: The market is experiencing 'irrational exuberance aaaaaaaaaaaaaaaaaaaaaa",
-    link: '/article2',
-  },
-  {
-    title: '3 Incredibly Cheap Technology Stocks',
-    link: '/article3',
-  },
-  {
-    title: '3 Things to Watch in the Stock Market This Week',
-    link: '/article4',
-  },
-];
-
 class Portfolio extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      portfolioItems: []
+      portfolioItems: [],
+      portfolioValue: '',
+      navbarLinks: [],
+      currentPortfolioName: ''
     }
   }
 
@@ -86,11 +25,22 @@ class Portfolio extends Component {
     this.getAllPortfolios().then(() => this.getCurrentPortfolio());
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.portfolios !== this.props.portfolios) {
+      const navbarLinks = this.props.portfolios.map(portfolio => {return {title: portfolio.name}});
+      this.setState({navbarLinks});
+    }
+
+    if (prevProps.currentPortfolioId !== this.props.currentPortfolioId) {
+      const currentPortfolio = this.getPortfolioById(this.props.portfolios, this.props.currentPortfolioId);
+      this.setState({currentPortfolioName: currentPortfolio.name});
+    }
+  }
+
   getAllPortfolios = async () => {
     try {
       const response = await getPortfoliosForUser();
       const portfolios = response.data;
-      console.log(portfolios);
       this.props.setPortfolios(portfolios);
       // Make sure the user has portfolios and hasn't set the currentPortfolioId
       if (portfolios.length > 0 && this.props.currentPortfolioId === -1) {
@@ -105,20 +55,18 @@ class Portfolio extends Component {
   getCurrentPortfolio = () => {
     try {
       const { portfolios, currentPortfolioId } = this.props;
-      console.log(this.props.portfolios);
-      console.log(this.props.currentPortfolioId);
       const portfolio = this.getPortfolioById(portfolios, currentPortfolioId);
-      console.log(portfolio);
-      this.setState({portfolioItems: portfolio.items});
+      this.setState({
+        portfolioItems: portfolio.items, 
+        portfolioValue: '$' + portfolio.value
+      });
     }
     catch (e) {
       alert('Failed to load portfolio.');
-      console.log(e);
     }
   }
 
   getPortfolioById = (portfolios, id) => {
-    console.log(portfolios);
     for (const idx in portfolios) {
       if (portfolios[idx].id === id) {
         return portfolios[idx];
@@ -127,26 +75,14 @@ class Portfolio extends Component {
   }
 
   render() {
-    console.log(this.state.portfolioItems);
     return (
       <div className="Portfolio">
         <Navbar
-          links={[
-            {
-              title: 'Month League',
-              location: '/league/monthLeague',
-            },
-            {
-              title: 'Penny Stocks',
-              location: '/league/pennyStocks',
-            },
-            {
-              title: 'Swing Stocks',
-              location: '/league/swingStocks',
-            },
-          ]}
+          links={this.state.navbarLinks}
+          currentPortfolioName={this.state.currentPortfolioName}
         />
         <div className="portfolio-circle" />
+        <div className='portfolio-value'>{this.state.portfolioValue}</div>
         <Graph
           isLoading={false}
           labels={['1/13/2018', '1/14/2018', '1/15/2018', '1/16/2018', '1/17/2018', '1/18/2018']}

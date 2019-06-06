@@ -15,8 +15,7 @@ body, html {
   overflow-x: hidden; }
 
 .Graph {
-  margin: 0 auto;
-  margin-top: 20px; }
+  margin: 0 auto; }
 
 .portfolio-listing-news-area {
   width: 800px;
@@ -44,3 +43,10 @@ body, html {
   z-index: -1;
   top: -520px;
   left: -1300px; }
+
+.portfolio-value {
+  text-align: center;
+  color: #FFFFFF;
+  margin: 10px 0;
+  font-size: 30px;
+  font-weight: 900; }
