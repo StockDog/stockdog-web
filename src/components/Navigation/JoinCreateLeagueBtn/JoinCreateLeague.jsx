@@ -6,7 +6,6 @@ import Select from 'react-select';
 import Button from '../../Button/Button';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
-import { withAlert } from 'react-alert'
 import { createLeague, joinLeague } from '../../../api/api';
 
 const selectOptions = [
@@ -110,10 +109,10 @@ class JoinCreateLeague extends Component {
         inviteCode: this.state.inviteCode,
         name: this.state.name
       });
-      this.setState({isModalOpen: false}, () => this.props.alert.show('League joined.'));
+      this.setState({isModalOpen: false}, () => alert('League joined.'));
     }
     catch (e) {
-      this.setState({isModalOpen: false}, () => this.props.alert.error('Failed to join league.\n' + e));
+      this.setState({isModalOpen: false}, () => alert('Failed to join league.\n' + e));
     }
   }
 
@@ -131,10 +130,10 @@ class JoinCreateLeague extends Component {
         start: startDay,
         end: endDay
       });
-      this.setState({isModalOpen: false}, () => this.props.alert.show('League joined.'));
+      this.setState({isModalOpen: false}, () => alert('League joined.'));
     }
     catch (e) {
-      this.setState({isModalOpen: false}, () => this.props.alert.error('Failed to create league.\n' + e));
+      this.setState({isModalOpen: false}, () => alert('Failed to create league.\n' + e));
     }
   }
 
@@ -216,4 +215,4 @@ class JoinCreateLeague extends Component {
   }
 }
 
-export default withAlert(JoinCreateLeague);
+export default JoinCreateLeague;

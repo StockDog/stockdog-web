@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './Registration.css';
 import './Login.css';
-import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { withAlert } from 'react-alert';
+import { withRouter, Link } from 'react-router-dom';
 import { loginUser } from '../../api/api';
 import { setUserInfo } from '../../global/state/globalActions';
 import { connect } from 'react-redux';
@@ -29,9 +27,10 @@ class Login extends Component {
          const res = await loginUser({ email, password });
 
          this.props.setUserInfo(res.data.userId, res.data.token);
-         this.props.history.push('/');
+         this.props.history.push('/portfolio');
       } catch (error) {
-         this.props.alert.error('Failed to login. Please check username and password.');
+         alert('Failed to login. Please check username and password.');
+         console.log(error);
       }
    };
 
@@ -40,7 +39,7 @@ class Login extends Component {
       return (
          <div className="Registration">
             <form className="register-form">
-               <a href='/'><div className="company-logo" /></a>
+               <Link to='/'><div className="company-logo" /></Link>
                <div className="form-group">
                   <input
                      onChange={this.handleInputChange}
@@ -65,7 +64,7 @@ class Login extends Component {
                   login
                </div>
                <div className='login-registration-link'>
-                  <a href='/registration'>Don't have an account?</a>
+                  <Link to='/registration'>Don't have an account?</Link>
                </div>
             </form>
          </div>
@@ -73,11 +72,6 @@ class Login extends Component {
    }
 }
 
-Login.propTypes = {
-   history: PropTypes.object.isRequired,
-   alert: PropTypes.object.isRequired,
-};
-
-export default withRouter(withAlert(connect(null, {
+export default withRouter(connect(null, {
    setUserInfo
-})(Login)));
+})(Login));

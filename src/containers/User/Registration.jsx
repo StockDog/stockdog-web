@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import './Registration.css';
-import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import ReactTooltip from 'react-tooltip';
-import { withAlert } from 'react-alert';
-import { compose } from 'redux';
+import { Link, withRouter } from 'react-router-dom';
 import { registerUser } from '../../api/api';
 import { Info } from 'react-feather';
 
 export class Registration extends Component {
   constructor(props) {
     super(props);
+
+    console.log('Registration component');
 
     this.state = {
       firstName: '',
@@ -61,7 +60,7 @@ export class Registration extends Component {
         this.props.info.show('Registration successful.');
         this.props.history.push('/login');
       } catch (error) {
-        this.props.alert.show(error);
+        alert(error);
       }
     } else {
       this.setState({ registerError: true });
@@ -82,7 +81,7 @@ export class Registration extends Component {
     return (
       <div className="Registration">
         <form className="register-form">
-          <a href='/'><div className="company-logo" /></a>
+          <Link to='/'><div className="company-logo" /></Link>
           {registerError && <div className="form-error">Please check input.</div>}
           <div className="form-group">
             <input
@@ -124,9 +123,9 @@ export class Registration extends Component {
               placeholder="password"
             />
             <div className="register-info-icon">
-              <a data-tip data-for='password-info'>
+              <div data-tip data-for='password-info'>
                 <Info color="#FFF" />
-              </a>
+              </div>
               <ReactTooltip id='password-info' type='warning' effect='solid'>
                 <span>Must be at least 8 characters (max. 32), and at least 1 uppercase letter, 1 lowercase letter, and 1 letter.<br /> No special characters are supported.</span>
               </ReactTooltip>
@@ -141,12 +140,4 @@ export class Registration extends Component {
   }
 }
 
-Registration.propTypes = {
-  history: PropTypes.object.isRequired,
-  alert: PropTypes.object.isRequired,
-};
-
-export default compose(
-  withAlert,
-  withRouter,
-)(Registration);
+export default withRouter(Registration);

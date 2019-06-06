@@ -15,7 +15,7 @@ class News extends Component {
 
     headlineObjs.forEach((headline) => {
       headlines.push(
-        <h2 onClick={() => this.props.history.push(headline.link)}>{headline.title}</h2>,
+        <h2 key={headline.title} onClick={() => this.props.history.push(headline.link)}>{headline.title}</h2>,
       );
     });
 

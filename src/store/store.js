@@ -4,13 +4,14 @@ import {
 import reduxLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { globalReducer } from '../global/state/globalReducer';
+import { portfolioReducer } from '../containers/Portfolio/state/portfolioReducer';
 
 const middleware = [thunk];
 
 middleware.push(reduxLogger);
 
 const store = createStore(
-  combineReducers({global: globalReducer}),
+  combineReducers({global: globalReducer, portfolio: portfolioReducer}),
   compose(
     applyMiddleware(...middleware),
     /*eslint-disable */
