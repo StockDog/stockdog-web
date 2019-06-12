@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import JoinCreateLeague from '../JoinCreateLeagueBtn/JoinCreateLeague';
+import JoinCreateLeague from '../JoinCreateLeague/JoinCreateLeague';
 import './Navbar.css';
 
 import { Award, User } from 'react-feather';
