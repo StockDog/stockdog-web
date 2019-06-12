@@ -18,7 +18,7 @@ class Graph extends Component {
 
    componentDidUpdate(prevProps) {
       if (prevProps.labels !== this.props.labels) {
-         this.setState({data: this.getData()});
+         // this.setState({data: this.getData()});
       }
    }
 
