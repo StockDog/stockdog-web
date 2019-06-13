@@ -121,14 +121,21 @@ class JoinCreateLeague extends Component {
    */
   executeCreateLeague = async () => {
     const dateOptions = {month: '2-digit', day: '2-digit', year: 'numeric'};
-    const startDay = this.state.selectedStartDay.toLocaleDateString('en-EN', dateOptions);
-    const endDay = this.state.selectedEndDay.toLocaleDateString('en-EN', dateOptions);
+    const startDay = this.state.selectedStartDay
+      .toLocaleDateString('en-EN', dateOptions).replace(/\//g, '-');
+    const endDay = this.state.selectedEndDay
+      .toLocaleDateString('en-EN', dateOptions).replace(/\//g, '-');
     try {
-      await createLeague({
-        name: this.state.name,
-        startPos: this.state.buyingPower,
+      const leagueResponse = await createLeague({
+        name: this.state.leagueName,
+        startPos: parseInt(this.state.buyingPower, 10),
         start: startDay,
         end: endDay
+      });
+
+      await joinLeague({
+        inviteCode: leagueResponse.data.inviteCode,
+        name: this.state.name
       });
       this.setState({isModalOpen: false}, () => alert('League joined.'));
     }
