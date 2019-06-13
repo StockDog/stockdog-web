@@ -26,14 +26,22 @@ class Portfolio extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    const newState = {};
+
     if (prevProps.portfolios !== this.props.portfolios) {
+      console.log('updating portfolios');
       const navbarLinks = this.props.portfolios.map(portfolio => {return {title: portfolio.name}});
-      this.setState({navbarLinks});
+      newState.navbarLinks = navbarLinks
     }
 
     if (prevProps.currentPortfolioId !== this.props.currentPortfolioId) {
+      console.log('updating portfolioId');
       const currentPortfolio = this.getPortfolioById(this.props.portfolios, this.props.currentPortfolioId);
-      this.setState({currentPortfolioName: currentPortfolio.name});
+      newState.currentPortfolioName = currentPortfolio.name;
+    }
+
+    if (Object.keys(newState).length > 0) {
+      this.setState(newState);
     }
   }
 
