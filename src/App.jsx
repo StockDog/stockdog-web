@@ -9,6 +9,7 @@ import store from './store/store';
 import Login from './containers/User/Login'
 import Registration from './containers/User/Registration';
 import Portfolio from './containers/Portfolio/Portfolio';
+import Stock from './containers/Stock/Stock';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
         <Router>
           <Switch>
             <AuthenticatedRoute path="/portfolio" component={Portfolio} appProps={this.props} />
+            <AuthenticatedRoute path="/stock/:ticker" component={Stock} appProps={this.props} />
             <UnauthenticatedRoute exact path="/" component={Login} appProps={this.props} />
             <UnauthenticatedRoute path="/registration" component={Registration} appProps={this.props}/>
           </Switch>
