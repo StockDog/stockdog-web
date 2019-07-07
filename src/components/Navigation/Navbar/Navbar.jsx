@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import JoinCreateLeague from '../JoinCreateLeague/JoinCreateLeague';
 import './Navbar.css';
-
+import Search from '../../Search/Search';
 import { Award, User } from 'react-feather';
 
 const primaryColor = '#3ee7ad';
@@ -47,6 +46,9 @@ class Navbar extends Component {
           {this.state.dropdownActive ? (
             <div className="navbar-portfolio-dropdown-content">{this.generateDropdownLinks()}</div>
           ) : null}
+        </div>
+        <div className='navbar-search'>
+          <Search />
         </div>
         <div className="navbar-sidebar-points">
           <div className="navbar-sidebar-points-circle">

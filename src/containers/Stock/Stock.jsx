@@ -68,7 +68,7 @@ class Stock extends Component {
         <Graph data={this.state.graphData}
           labels={this.state.graphLabels}
         />
-        <div className="stock-content">
+        {/* <div className="stock-content">
           <Article title={this.state.title} content={this.state.content} />
         </div>
         <Trade quantity={13} price={price} volume={'12M'}
@@ -79,7 +79,7 @@ class Stock extends Component {
           price={price}
           ticker={this.state.ticker}
           buyingPower={10000} // Hard coded buypower
-        />
+        /> */}
       </div>
     );
   }
