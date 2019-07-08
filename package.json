@@ -23,8 +23,10 @@
     "react-select": "^2.2.0",
     "react-sidenav": "^2.1.2",
     "react-tooltip": "^3.4.0",
+    "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.3.2"
   },
   "scripts": {
     "lint": "eslint src/**/*.js",
@@ -41,20 +43,15 @@
     "build-storybook": "npm-run-all -p build-storybook -s public watch-css"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^4.0.0-alpha.24",
-    "@storybook/addon-links": "^4.0.0-alpha.24",
-    "@storybook/addons": "^4.0.0-alpha.24",
-    "@storybook/react": "^4.0.0-alpha.24",
+    "@storybook/addon-actions": "5.1.9",
+    "@storybook/addon-links": "5.1.9",
+    "@storybook/addons": "5.1.9",
+    "@storybook/react": "5.1.9",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-runtime": "^6.26.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^5.10.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.11.1",
     "node-sass": "^4.11.0",
     "prop-types": "^15.6.2",
     "sass-loader": "^7.0.3"

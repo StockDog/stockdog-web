@@ -15,7 +15,7 @@ const getRequestConfig = () => {
 
 const urls = {
    users: `${baseURL}/users`,
-   charts: `${baseURL}/charts`,
+   stocks: `${baseURL}/stocks`,
    transactions: `${baseURL}/transactions`,
    portfolios: `${baseURL}/portfolios`,
    leagues: `${baseURL}/leagues`
@@ -47,7 +47,7 @@ export const loginUser = async (params) => {
  * length
  */
 export const getStockHistory = async (params) => {
-   return await axios.get(`${urls.charts}/${params.ticker}?length=${params.length}`, getRequestConfig());
+   return await axios.get(`${urls.stocks}/${params.ticker}/chart?length=${params.length}`, getRequestConfig());
 };
 
 /**
